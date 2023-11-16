@@ -25,7 +25,6 @@ class Scraper extends Model
             $td =  $node->text();
 
             $word = CleanseController::cleanse($td);
-
             $data = [
                 "currency" => $word[0],
                 "buy" => $word[1],

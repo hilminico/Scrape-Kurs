@@ -8,17 +8,26 @@ use App\Models\Scraper;
 class ScraperController extends Controller
 {
     public static function store(){
-        $scrap = new Scraper();
-        $scrap->getScrape();
-
-        return "berhasil";
+        try{
+            $scrap = new Scraper();
+            $scrap->getScrape();
+    
+            return "berhasil";
+    
+        }catch(\Exception $e){
+            return response($e->getMessage());
+        }
     }
 
     public static function deleteAll(){
-        $scrap = new Scraper();
-        $scrap->deleteAll();
-
-        return response(["message" => "berhasil"],200);
+        try{
+            $scrap = new Scraper();
+            $scrap->deleteAll();
+    
+            return response(["message" => "berhasil"],200);
+        }catch(\Exception $e){
+            return response($e->getMessage());
+        }
     }
 
 }
